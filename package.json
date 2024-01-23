@@ -76,8 +76,8 @@
     "react-app-rewired": "^2.2.1"
   },
   "build": {
-    "appId": "com.electron.ams",
-    "productName": "AMS",
+    "appId": "com.electron.amd",
+    "productName": "AMD",
     "files": [
       "build/**/*",
       "node_modules/**/*"

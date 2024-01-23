@@ -8,10 +8,10 @@ import SignUp from './signup.js';
 const Login = () => {
   return (
     <Router>
-      <Routes>
+     <Routes>
         <Route path="/" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-      </Routes>
+    </Routes>
     </Router>
   );
 };

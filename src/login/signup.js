@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   Avatar,
   Box,
@@ -23,7 +24,15 @@ import axios from 'axios';
 import SignUpFeedbackDialog from './Dialogbox.js';
 import VerifyEmailDialog from './VerifyEmail';
 
-import image from '../Images/bhagwan-mahavir-university-logo.png';
+import image from '../Images/download.png';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#438A7A',
+    },
+  },
+});
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -91,6 +100,7 @@ export default function SignUp() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <Grid
       container
       component="main"
@@ -107,7 +117,7 @@ export default function SignUp() {
         sx={{
           backgroundImage: `url(${image})`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '100% auto',
+          backgroundSize: '50% auto',
           backgroundPosition: 'center',
         }}
       />
@@ -224,5 +234,6 @@ export default function SignUp() {
         isSignUp={true}
       />
     </Grid>
+        </ThemeProvider>
   );
 }

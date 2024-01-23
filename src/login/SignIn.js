@@ -15,6 +15,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+import { Twitter, Google, Facebook } from '@mui/icons-material';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -23,7 +25,7 @@ import axios from 'axios';
 
 import SignUpFeedbackDialog from './Dialogbox.js';
 
-import image from '../Images/bhagwan-mahavir-university-logo.png';
+import image from '../Images/download.png';
 
 function Copyright(props) {
   return (
@@ -43,9 +45,11 @@ function Copyright(props) {
   );
 }
 
-const defaultTheme = createTheme();
+
+
 
 export default function SignIn() {
+  
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -86,8 +90,15 @@ export default function SignIn() {
       });
   };
 
+ const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#438A7A',
+    },
+  },
+});
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Grid
         container
         component="main"
@@ -104,7 +115,7 @@ export default function SignIn() {
           sx={{
             backgroundImage: `url(${image})`,
             backgroundRepeat: 'no-repeat',
-            backgroundSize: '100% auto',
+            backgroundSize: '50% auto',
             backgroundPosition: 'center',
           }}
         />
@@ -126,13 +137,16 @@ export default function SignIn() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
 
+            <Typography variant="h6" fontWeight="bold"
+             color="text.secondary"
+            >
+              Welcome Back !
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ mb : 3 }} >
+              Sign in to continue to Invoika.
+            </Typography>            
+            
             <Box component="form" onSubmit={handleSubmit}>
               <TextField
                 margin="normal"
@@ -188,6 +202,7 @@ export default function SignIn() {
 
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
+                
                 label="Remember me"
               />
               {wrongPassword && (
@@ -215,16 +230,74 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
+              
+              <Box sx={{ 
+                  mx : 5,
+                  display : 'flex',
+                  flexDirection: 'column',
+                  alignItems :'center'
+              }}>
+                 <Typography 
+                   variant="h6" 
+                   fontWeight="bold"
+                   color="text.secondary" 
+                   sx ={{mt : 1}}
+                  >
+                 Sign in with
+                </Typography> 
+                <Grid container sx={{
+                  mb : 3,
+                  mt : 1,
+                  display : "flex",
+                  alignItems : "center",
+                  justifyContent:"center",
+                }}
+                  >
+                 <Grid item>
+                 <Twitter sx={{
+                   backgroundColor : "#50B0F4",
+                   p : 2,
+                   borderRadius : 4,
+                   color : "white",
+                   
+                 }} />
+                 </Grid>
+                 <Grid item> 
+                 <Google sx={{
+                   backgroundColor : "#ED4343",
+                   p : 2,
+                   borderRadius : 4,
+                   color : "white",
+                   mx : 2
+                 }} 
+                   />                
+                 </Grid>
+                 <Grid item> 
+                 <Facebook sx={{
+                   color : "#428A7A",
+                   p : 2,
+                 }} 
+                   />                 
+                 </Grid>
+                </Grid>
+                
+             </Box>
+             
               <Grid container>
                 <Grid item>
-                  <Link href="/" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  
+                  <Typography  variant="body2" display="inline" color="text.secondary" fontWeight="bold">
+                   Don't have an account ? 
+                   </Typography>
+                  <Link href="/" variant="body2" display="inline" fontWeight="bold" >
+                    {" Sign Up Now"}
                   </Link>
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
+          
         </Grid>
       </Grid>
       <SignUpFeedbackDialog
